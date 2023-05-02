@@ -1,0 +1,30 @@
+How to use git to get just the latest revision of a project?
+https://stackoverflow.com/questions/1209999/how-to-use-git-to-get-just-the-latest-revision-of-a-project
+git clone --depth 1 https://github.com/opencv/opencv
+
+
+//How do I clone a subdirectory only of a Git repository?
+
+//sparse checkout
+echo "some/dir/" >> .git/info/sparse-checkout
+echo "another/sub/tree" >> .git/info/sparse-checkout
+
+mkdir <repo>
+cd <repo>
+git init
+git remote add -f origin https://github.com/opencv/opencv/tree/4.x/samples/cpp/example_cmake
+
+echo "some/dir/" >> .git/info/sparse-checkout
+echo "another/sub/tree" >> .git/info/sparse-checkout
+
+git pull origin master
+
+git clone --no-checkout https://github.com/tericcabrel/blog-tutorials.git
+
+cd blog-tutorials
+
+git sparse-checkout init --cone
+
+git sparse-checkout set deploy-node-app
+
+git checkout @
